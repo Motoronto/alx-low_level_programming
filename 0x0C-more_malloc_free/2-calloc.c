@@ -1,7 +1,9 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * _calloc - A function that allocates memory for an array, using malloc.
+ * _calloc - Allocates memory for an array of a certain number
+ *           of elements each of an inputted byte size.
  * @nmemb: The number of elements.
  * @size: The byte size of each array element.
  *
@@ -10,22 +12,22 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *s;
-	char *x;
-	unsigned int y;
+	void *mem;
+	char *filler;
+	unsigned int index;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	s = malloc(nmemb * size);
+	mem = malloc(size * nmemb);
 
-	if (s == NULL)
+	if (mem == NULL)
 		return (NULL);
 
-	x = s;
+	filler = mem;
 
-	for (y = 0; y < (nmemb * size); y++)
-		x[y] = '\0';
+	for (index = 0; index < (size * nmemb); index++)
+		filler[index] = '\0';
 
-	return (s);
+	return (mem);
 }
